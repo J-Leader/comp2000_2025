@@ -16,9 +16,19 @@ public class Main extends JFrame {
       }
 
       @Override
-      public void paint(Graphics g) {
-	g.setColor(java.awt.Color.BLACK);
-	g.drawRect(10, 10, 700, 700);
+    public void paint(Graphics g) {
+      int gridDimensions = 35;
+
+	  g.setColor(java.awt.Color.BLACK);
+	  g.drawRect(10, 10, 700, 700);
+        for(int x = 10; x<710; x+=gridDimensions){
+          for(int y =10; y<710; y+=gridDimensions){
+            g.drawRect(x, y, gridDimensions, gridDimensions);
+          }
+
+
+        }
+
       }
     }
 
@@ -31,8 +41,10 @@ public class Main extends JFrame {
     }
 
     public void run() {
-      while(true) {
+      while(true){
         repaint();
       }
     }
+
+
 }

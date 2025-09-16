@@ -3,10 +3,11 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-public class Cell extends Rectangle {
+public abstract class Cell extends Rectangle { //made abstract to ensure that all cells are either lake, shore or grass
   static int size = 35;
   char col;
   int row;
+  Color cellColor; // variable inherited and used by Cell variants to differentiate
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
@@ -18,7 +19,7 @@ public class Cell extends Rectangle {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);
     } else {
-      g.setColor(Color.WHITE);
+      g.setColor(cellColor);
     }
     g.fillRect(x, y, size, size);
     g.setColor(Color.BLACK);

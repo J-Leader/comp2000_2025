@@ -1,17 +1,33 @@
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Optional;
+import java.util.Random; //used to add randomisation to map generation
+
 
 public class Grid {
   Cell[][] cells = new Cell[20][20];
-  
-  public Grid() {
+  Random rand = new Random();
+  public Grid() { //changed cell to Grass
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
-        cells[i][j] = new Cell(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+         int randomSpawnValue = rand.nextInt(15);
+        switch(randomSpawnValue)
+        {
+          case 1:
+          cells[i][j] = new Lake(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+          case 3:
+          cells[i][j] = new Mountain(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+          default:
+          cells[i][j] = new Grass(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+        }
       }
     }
   }
+
+
 
   private char colToLabel(int col) {
     return (char) (col + Character.valueOf('A'));

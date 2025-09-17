@@ -1,3 +1,3 @@
-public class animalBehaviour {
-    
+interface animalBehaviour {
+    public void animalMovement();
 }

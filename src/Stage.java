@@ -14,7 +14,12 @@ public class Stage {
     actors = new ArrayList<Actor>();
     actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
     actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
-    actors.add(new Bird(grid.cellAtColRow(12, 9).get()));    
+    actors.add(new Bird(grid.cellAtColRow(12, 9).get()));  
+    for(int i=0; i<actors.size();i++)
+    {
+      actors.get(i).MoveableCells = actors.get(i).findPassableCells(grid);
+      System.out.println(actors.get(i).MoveableCells);
+    }  
   }
 
   public void paint(Graphics g, Point mouseLoc) {

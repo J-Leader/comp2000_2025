@@ -9,6 +9,7 @@ public Grass (char inCol, int inRow, int xPos, int yPos)
 {
 super(inCol, inRow, xPos, yPos); //Super Cell constructor to ensure that col and row values are set and rectangle super is also used.
 cellColor = Color.GREEN;
+cellAltitude = 0;
 }
 
 }

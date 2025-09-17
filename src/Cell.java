@@ -8,6 +8,10 @@ public abstract class Cell extends Rectangle { //made abstract to ensure that al
   char col;
   int row;
   Color cellColor; // variable inherited and used by Cell variants to differentiate
+  int cellAltitude; // variable that could be used to check for events such as strong weather. e.g strong winds hitting harder if you're up high on a mountain vs on level ground in the grass.  
+  //List<Items> spawnableItems; //to be a list of items that a cell can spawn. 
+
+
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);

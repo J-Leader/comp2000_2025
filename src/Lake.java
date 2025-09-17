@@ -6,6 +6,7 @@ public Lake(char inCol, int inRow, int xPos, int yPos) // re-use given cell cons
 {
 super(inCol, inRow, xPos, yPos);
 cellColor = Color.BLUE;
+cellAltitude = -15;
 }
 
 }

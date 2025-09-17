@@ -1,12 +1,11 @@
 import java.awt.Color;
 import java.awt.Polygon;
-import java.util.ArrayList;
 
 public class Cat extends Actor {
   public Cat(Cell inLoc) {
-    loc = inLoc;
+   super(inLoc);
     color = Color.BLUE;
-    display = new ArrayList<Polygon>();
+    movementTemplate.add("Grass");
     Polygon ear1 = new Polygon();
     ear1.addPoint(loc.x + 11, loc.y + 5);
     ear1.addPoint(loc.x + 15, loc.y + 15);

@@ -1,12 +1,13 @@
 import java.awt.Color;
 import java.awt.Polygon;
-import java.util.ArrayList;
 
 public class Bird extends Actor {
   public Bird(Cell inLoc) {
-    loc = inLoc;
+    super(inLoc);
     color = Color.RED; //Bird made red for visibility on background
-    display = new ArrayList<Polygon>();
+    movementTemplate.add("Grass");
+    movementTemplate.add("Lake");
+    movementTemplate.add("Mountain");
     Polygon wing1 = new Polygon();
     wing1.addPoint(loc.x + 5, loc.y + 5);
     wing1.addPoint(loc.x + 15, loc.y + 17);

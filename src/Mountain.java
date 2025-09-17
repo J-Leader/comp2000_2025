@@ -9,6 +9,7 @@ public Mountain(char inCol, int inRow, int xPos, int yPos) // re-use given cell 
 {
 super(inCol, inRow, xPos, yPos);
 cellColor = Color.DARK_GRAY;
+cellAltitude = 15;
 }
 
 @Override //Overrides the inherited paint method from Cell 

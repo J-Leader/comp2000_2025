@@ -14,10 +14,10 @@ public abstract class Actor {
 
   public Actor(Cell inLoc){
     loc = inLoc;
-    display = new ArrayList<Polygon>();
-    movementTemplate = new ArrayList<String>();
-    passableCellsList = new ArrayList<Cell>();
-    MoveableCells = new ArrayList<Cell>();
+    display = new ArrayList<>();
+    movementTemplate = new ArrayList<>();
+    passableCellsList = new ArrayList<>();
+    MoveableCells = new ArrayList<>();
   }
 
 

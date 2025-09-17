@@ -18,8 +18,10 @@ public class Stage {
     for(int i=0; i<actors.size();i++)
     {
       actors.get(i).MoveableCells = actors.get(i).findPassableCells(grid);
-      System.out.println(actors.get(i).MoveableCells);
     }  
+
+
+
   }
 
   public void paint(Graphics g, Point mouseLoc) {

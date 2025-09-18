@@ -26,4 +26,14 @@ public class Bird extends Actor{
     display.add(wing2);
   }
 
+   public void onHovered()
+  {
+    System.out.println("Cheep Cheep");
+  }
+
+  public void offHovered()
+  {
+    
+  }
+
 }

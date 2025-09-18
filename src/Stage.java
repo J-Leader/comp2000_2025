@@ -18,8 +18,8 @@ public class Stage {
     for(int i=0; i<actors.size();i++)
     {
       actors.get(i).MoveableCells = actors.get(i).findPassableCells(grid);
+     
     }  
-
 
 
   }

@@ -4,13 +4,15 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Actor implements canMove{
+public abstract class Actor implements animalBehaviour{
   Color color;
   Cell loc;
   List<Polygon> display;
   List<String> possibleMovementTemplate; // used in subclasses to define the names of Cells the Actor can step into
   List<Cell> passableCellsList; //final list of cells the actor can step into, to be checked against when movement is implemented.
   List<Cell> MoveableCells;
+  boolean madeSound;
+
 
   public Actor(Cell inLoc){
     loc = inLoc;
@@ -18,6 +20,7 @@ public abstract class Actor implements canMove{
     possibleMovementTemplate = new ArrayList<>();
     passableCellsList = new ArrayList<>();
     MoveableCells = new ArrayList<>();
+    
   }
 
 
@@ -27,6 +30,7 @@ public abstract class Actor implements canMove{
       g.fillPolygon(p);
       g.setColor(Color.GRAY);
       g.drawPolygon(p);
+      this.isHovered();
     }
   }
 
@@ -52,13 +56,20 @@ public abstract class Actor implements canMove{
     return passableCellsList;
   }
 
-
-  public void movement(Cell targetCell)
+ public void isHovered()
   {
-
-
+    if(loc.hovered && !madeSound)
+    {
+      this.onHovered();
+      madeSound=true;
+    }
+    else if(!loc.hovered && madeSound)
+    {
+      madeSound=false;
+      this.offHovered();
+    }
+    
+    
   }
-
-
 
 }

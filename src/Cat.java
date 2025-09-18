@@ -22,4 +22,14 @@ public class Cat extends Actor{
     display.add(ear1);
     display.add(ear2);
   }
+
+   public void onHovered()
+  {
+    color = Color.GREEN;
+  }
+
+  public void offHovered()
+  {
+    color = Color.BLUE;
+  }
 }

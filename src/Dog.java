@@ -24,4 +24,14 @@ public class Dog extends Actor  {
     display.add(ear1);
     display.add(ear2);
   }
+
+   public void onHovered()
+  {
+    System.out.println("Woof");
+  }
+
+  public void offHovered()
+  {
+    System.out.println("Wait come back!");
+  }
 }

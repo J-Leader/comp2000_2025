@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Polygon;
 
-public class Bird extends Actor {
+public class Bird extends Actor{
   public Bird(Cell inLoc) {
     super(inLoc);
     color = Color.RED; //Bird made red for visibility on background
@@ -25,4 +25,5 @@ public class Bird extends Actor {
     display.add(wing1);
     display.add(wing2);
   }
+
 }

@@ -4,7 +4,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Actor {
+public abstract class Actor implements animalBehaviour {
   Color color;
   Cell loc;
   List<Polygon> display;

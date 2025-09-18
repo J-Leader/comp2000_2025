@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Polygon;
 
-public class Cat extends Actor {
+public class Cat extends Actor{
   public Cat(Cell inLoc) {
    super(inLoc);
     color = Color.BLUE;

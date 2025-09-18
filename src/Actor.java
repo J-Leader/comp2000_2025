@@ -4,7 +4,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Actor{
+public abstract class Actor implements canMove{
   Color color;
   Cell loc;
   List<Polygon> display;
@@ -51,5 +51,13 @@ public abstract class Actor{
 
     return passableCellsList;
   }
+
+  public void movement(Cell targetCell)
+  {
+
+
+  }
+
+
 
 }

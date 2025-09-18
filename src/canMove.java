@@ -1,4 +1,4 @@
 interface canMove {
     
-void movement();
+void movement(Cell targetCell);
 }

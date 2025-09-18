@@ -5,9 +5,9 @@ public class Bird extends Actor{
   public Bird(Cell inLoc) {
     super(inLoc);
     color = Color.RED; //Bird made red for visibility on background
-    movementTemplate.add("Grass");
-    movementTemplate.add("Lake");
-    movementTemplate.add("Mountain");
+    possibleMovementTemplate.add("Grass");
+    possibleMovementTemplate.add("Lake");
+    possibleMovementTemplate.add("Mountain");
     Polygon wing1 = new Polygon();
     wing1.addPoint(loc.x + 5, loc.y + 5);
     wing1.addPoint(loc.x + 15, loc.y + 17);

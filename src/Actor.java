@@ -52,6 +52,7 @@ public abstract class Actor implements canMove{
     return passableCellsList;
   }
 
+
   public void movement(Cell targetCell)
   {
 

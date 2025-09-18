@@ -5,8 +5,8 @@ public class Dog extends Actor  {
   public Dog(Cell inLoc) {
     super(inLoc);
     color = Color.YELLOW;
-    movementTemplate.add("Grass");
-    movementTemplate.add("Lake");
+    possibleMovementTemplate.add("Grass");
+    possibleMovementTemplate.add("Lake");
     Polygon ear1 = new Polygon();
     ear1.addPoint(loc.x + 5, loc.y + 5);
     ear1.addPoint(loc.x + 15, loc.y + 5);

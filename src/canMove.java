@@ -1,3 +1,6 @@
 interface canMove {
     
+void movement();
+
+
 }

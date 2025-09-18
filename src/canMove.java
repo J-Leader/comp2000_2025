@@ -1,6 +1,4 @@
 interface canMove {
     
 void movement();
-
-
 }

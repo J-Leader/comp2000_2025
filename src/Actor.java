@@ -8,14 +8,14 @@ public abstract class Actor{
   Color color;
   Cell loc;
   List<Polygon> display;
-  List<String> movementTemplate; // used in subclasses to define the names of Cells the Actor can step into
+  List<String> possibleMovementTemplate; // used in subclasses to define the names of Cells the Actor can step into
   List<Cell> passableCellsList; //final list of cells the actor can step into, to be checked against when movement is implemented.
   List<Cell> MoveableCells;
 
   public Actor(Cell inLoc){
     loc = inLoc;
     display = new ArrayList<>();
-    movementTemplate = new ArrayList<>();
+    possibleMovementTemplate = new ArrayList<>();
     passableCellsList = new ArrayList<>();
     MoveableCells = new ArrayList<>();
   }
@@ -38,9 +38,9 @@ public abstract class Actor{
       {
         Class currentCellType = grid.cells[i][j].getClass();
         String currentCellTypeName = currentCellType.getName();
-        for(int k=0; k<movementTemplate.size();k++)
+        for(int k=0; k<possibleMovementTemplate.size();k++)
         {
-          if(currentCellTypeName==movementTemplate.get(k))
+          if(currentCellTypeName==possibleMovementTemplate.get(k))
           {
             passableCellsList.add(grid.cells[i][j]);
           }

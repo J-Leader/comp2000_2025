@@ -33,3 +33,11 @@ The Actor class now also contains the findPassableCells() method and several new
 
 
 
+Generics
+
+Generics have been used minimally throughout the project, primarily in the form of List variables in the Actor class. I made use of String and Cell as my main type parameters, ensuring my generic List variables would take those values, but also for clarity in future code design, it ensures transparency about the intended use of the variables (in case my prefered meaningful variable names and comments were not significant enough.)
+
+
+
+
+

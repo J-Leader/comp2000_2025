@@ -5,6 +5,16 @@ This README has been altered from the original README file supplied by the COMP2
 
 Inheritance has been used extensively in the alterations made to the base week 5 work for the purposes of this assignment, this is particularly evident in the changes made to the Actor and Cell classes and my implementation of several subclasses of Cell in the form of Mountain, Grass and Lake as well as the interface animalBehaviour.
 
+The largest initial change made to Cell is that it has been made an abstract class, furthermore 3 subclasses now extend Cell including Mountain, Grass and Lake. This was done to bring the design pattern in line with Actor. Cell is now a class that should never have objects constructed from it, instead the subclasses and any potential future subclasses of Cell should be used to populate the Grid. Making the class abstract should ensure that this is the practice used in future.
+
+With that being said Cell still retains its constructor and in fact is used in every subclasses constructor through a super() to ensure that the subclasses still receieve and assign the relevant values that allowed Cell objects to function in the grid in the base code. 
+
+Furthermore the Cell subclass Mountain specifically overrides the cell paint method, though it does call the cell paint method via super() to ensure proper function if the user hovers over them. This is to ensure the mountain can maintain its unique visual appearance, adding to the aesthetic of the game.
+
+Cell now contains several new attributes that differ between subclasses, including cellColor and cellAltitude. These attributes being inherited allows for unique values in each subclass while ensuring minimal overhead in the implementation of these values. i.e ensuring that future created subclasses do not have to initialise the variable of the same name to function.
+
+These Cell subclasses function identically to the Cell superclass they inherit from, and are inserted into the grid in the Grid constructor. Here the initial code that allowed for cells to populate the array has been replaced with a random function with a switch case that defaults to Grass, but can select to insert a Lake or Mountain into the array based off a random number. That being said inheritance allows for the cells array to still be an array of Cell objects as the subclasses are all Cells via inheritance. This use of inheritance results in a large amount of flexibility for map generation expansion in the future, as new cell subclasses can seamslessly be added to the generation switch case.
+
 An initial change to actor is the super constructor that its subclasses now use. The subclasses all contained 
 loc = inLoc;
     display = new ArrayList<>();

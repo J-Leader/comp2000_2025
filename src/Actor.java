@@ -11,7 +11,7 @@ public abstract class Actor implements animalBehaviour{
   List<String> possibleMovementTemplate; // used in subclasses to define the names of Cells the Actor can step into
   List<Cell> passableCellsList; //final list of cells the actor can step into, to be checked against when movement is implemented.
   List<Cell> MoveableCells;
-  boolean madeSound;
+  boolean performedHoverFunction;
 
 
   public Actor(Cell inLoc){
@@ -56,16 +56,18 @@ public abstract class Actor implements animalBehaviour{
     return passableCellsList;
   }
 
+
+
  public void isHovered()
   {
-    if(loc.hovered && !madeSound)
+    if(loc.hovered && !performedHoverFunction)
     {
       this.onHovered();
-      madeSound=true;
+      performedHoverFunction=true;
     }
-    else if(!loc.hovered && madeSound)
+    else if(!loc.hovered && performedHoverFunction)
     {
-      madeSound=false;
+      performedHoverFunction=false;
       this.offHovered();
     }
     

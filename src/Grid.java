@@ -6,14 +6,28 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.Random;
 
 public class Grid {
   Cell[][] cells = new Cell[20][20];
+  Random rand = new Random();
   
   public Grid() {
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
-        cells[i][j] = new Cell(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          int randomSpawnValue = rand.nextInt(15);
+        switch(randomSpawnValue)
+        {
+          case 1:
+          cells[i][j] = new Lake(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+          case 3:
+          cells[i][j] = new Mountain(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+          default:
+          cells[i][j] = new Grass(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
+          break;
+        }
       }
     }
   }

@@ -20,15 +20,13 @@ public class Client {
                 .thenApply(HttpResponse::body)
                 .thenAccept(inputStream -> {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-                        /*String line;
-                        while ((line = reader.readLine()) != null) {
-                                System.out.println("Received: " + line);
-                        }*/
-
                         reader.lines()
                                 .map(line -> line.split(" "))
+                                //.flatMap(line -> line.stream())
+                                
                                 .limit(5)
                                 .forEach(pieces ->{
+                                    //System.out.println("Receieved new weather event at time:" + pieces[2]);
                                     System.out.println("Receieved new weather event at time:" + pieces[0]);
                                     //pieces 1 is weather condition
                                     //pieces 2 is x coord
@@ -39,7 +37,7 @@ public class Client {
                                     //cells need a currentWeatherCondition variable
                                     // Weather class?
                                     // specific weather subclasses?
-                                    
+                                    //Observer pattern that monitors the weather and informs that cells need to change weather.
 
 
                                 })

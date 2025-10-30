@@ -27,13 +27,19 @@ public class Client {
 
                         reader.lines()
                                 .map(line -> line.split(" "))
+                                .limit(5)
                                 .forEach(pieces ->{
                                     System.out.println("Receieved new weather event at time:" + pieces[0]);
                                     //pieces 1 is weather condition
                                     //pieces 2 is x coord
                                     //pieces 3 is y coord
                                     //pieces 4 is float value
-
+                                    
+                                    //maybe forEach and then a lambda for each condition.\
+                                    //cells need a currentWeatherCondition variable
+                                    // Weather class?
+                                    // specific weather subclasses?
+                                    
 
 
                                 })

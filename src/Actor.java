@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Actor implements Pulse {
@@ -11,6 +12,8 @@ public abstract class Actor implements Pulse {
   int moves;
   int turns;
   MoveStrategy mover;
+  List<String> possibleMovementTemplate; // used in subclasses to define the names of Cells the Actor can step into
+   
 
   protected Actor(Cell inLoc, Color inColor, boolean isBot, int inMoves) {
     loc = inLoc;
@@ -20,7 +23,7 @@ public abstract class Actor implements Pulse {
     moves = inMoves;
     turns = 1;
     setPoly();
-    
+    possibleMovementTemplate = new ArrayList<>();
   }
 
   public void paint(Graphics g) {

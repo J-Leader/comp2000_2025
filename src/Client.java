@@ -28,12 +28,13 @@ public class Client {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
                             reader.lines()
                                 .map(line -> line.split(" "))
-                                .limit(1)
+                                .filter(pieces -> Float.parseFloat(pieces[4]) < 0.4)
+                                .limit(5)
                                  //.collect(Collectors.toList());
                                   .forEach(pieces ->{
-                                    testPrinter(pieces);
-
-                                    //System.out.println("Receieved new weather event at x:" + pieces[2]);
+                                    //testPrinter(pieces);
+                                    System.out.println("Receieved new weather event at x:" + pieces[2]);
+                                    System.out.println("Receieved new weather event at y:" + pieces[3]);
                                     
 
                                     //run once, collect, take and apply the transformation in a weather tracker class? Loop it there?

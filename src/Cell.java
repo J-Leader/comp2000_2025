@@ -13,10 +13,13 @@ public abstract class Cell extends Rectangle {
   //List<Items> spawnableItems; //to be a list of items that a cell can spawn. 
   boolean hovered;
 
+  int weatherState; // int tracking weather state
+
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
     col = inCol;
     row = inRow;
+    weatherState = 0; // sets initial weather state to clear
   }
 
    public void paint(Graphics g, Point mousePos) {
@@ -53,5 +56,7 @@ public abstract class Cell extends Rectangle {
   }
 
   //state machine to be done
+
+  
 }
   

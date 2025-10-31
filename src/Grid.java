@@ -80,12 +80,14 @@ public class Grid {
         cellAtColRow(colToLabel(i), j + 1).ifPresent(inRadius::add);
         cellAtColRow(colToLabel(i - 1), j).ifPresent(inRadius::add);
         cellAtColRow(colToLabel(i + 1), j).ifPresent(inRadius::add);
+        
     }
 
     for(Cell c: inRadius.toArray(new Cell[0])) {
         inRadius.addAll(getRadius(c, size - 1));
     }
     return new ArrayList<Cell>(inRadius);
+    
   }
 
   public void paintOverlay(Graphics g, List<Cell> cells, Color color) {

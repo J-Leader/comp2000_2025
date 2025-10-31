@@ -16,7 +16,6 @@ public class Client {
     
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String temp;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -27,14 +26,15 @@ public class Client {
                 .thenApply(HttpResponse::body)
                 .thenAccept(inputStream -> {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-                        reader.lines()
+                            reader.lines()
                                 .map(line -> line.split(" "))
                                 .limit(1)
-                                 .forEach(pieces ->{
+                                 //.collect(Collectors.toList());
+                                  .forEach(pieces ->{
+                                    testPrinter(pieces);
 
                                     //System.out.println("Receieved new weather event at x:" + pieces[2]);
-                                    //System.out.println("Receieved new weather event at y:" + pieces[3]);
-                                    System.out.println("Receieved new weather event at time:" + pieces[1]);
+                                    
 
                                     //run once, collect, take and apply the transformation in a weather tracker class? Loop it there?
                                     //simplest implementation, have that class lean into design patterns and have lambda's define conditions
@@ -48,11 +48,11 @@ public class Client {
                                     // Weather class?
                                     // specific weather subclasses?
                                     //Observer pattern that monitors the weather and informs that cells need to change weather.
-                                })
+                                });
 
 
                                 
-                                ;
+                  
 
                     } catch (IOException e) {
                         System.err.println("Error reading Server Side Event (SSE) stream: " + e.getMessage());
@@ -60,4 +60,12 @@ public class Client {
                 })
                 .join(); // Wait for the async operation to complete
     }
+
+
+    public static void testPrinter(String[] test){
+        System.out.println(test[0]);
+    }
+
+
+
 }

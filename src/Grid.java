@@ -71,7 +71,7 @@ public class Grid {
     return Optional.empty();
   }
 
-  public List<Cell> getRadius(Cell from, int size) {
+  public List<Cell> getRadius(Cell from, int size, Actor player) {
     int i = labelToCol(from.col);
     int j = from.row;
     Set<Cell> inRadius = new HashSet<Cell>();
@@ -83,10 +83,29 @@ public class Grid {
         
     }
 
+    
+
     for(Cell c: inRadius.toArray(new Cell[0])) {
-        inRadius.addAll(getRadius(c, size - 1));
+        inRadius.addAll(getRadius(c, size - 1, player));
     }
-    return new ArrayList<Cell>(inRadius);
+
+   List<Cell> prospectiveMovementList = new ArrayList<Cell>(inRadius);
+  List<Cell> finalMovementList = new ArrayList<Cell>();
+
+      for(int x=0; x<prospectiveMovementList.size(); x++) 
+      {
+        Class currentCellType = prospectiveMovementList.get(x).getClass();
+        String currentCellTypeName = currentCellType.getName();
+        for(int k=0; k<player.possibleMovementTemplate.size();k++)
+        {
+          if(currentCellTypeName==player.possibleMovementTemplate.get(k))
+          {
+            finalMovementList.add(prospectiveMovementList.get(x));
+          }
+          
+        }
+      }
+    return finalMovementList;
     
   }
 

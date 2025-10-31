@@ -28,6 +28,11 @@ public class SelectingNewLocation implements GameState {
         System.out.println("KILLL MEEEEEEEEE");
       }
     }
+    else// what to do if cliced was not present
+    {
+      System.out.println("Not a valid move, please try again");
+      s.currentState = new ChoosingActor();
+    }
   }
 
   @Override

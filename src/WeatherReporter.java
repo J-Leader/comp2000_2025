@@ -1,0 +1,42 @@
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+public class WeatherReporter {
+
+public List<String[]> checkWeather(){
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://13.238.167.130/weather"))
+                .header("Accept", "text/event-stream")
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofInputStream())
+                .thenApply(HttpResponse::body)
+                .thenAccept(inputStream -> {
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                        List<String[]> weatherReport = reader.lines()
+                                .map(line -> line.split(" "))
+                                .limit(1)
+                                .collect(Collectors.toList())
+                                ;
+                               
+                    } catch (IOException e) {
+                        System.err.println("Error reading Server Side Event (SSE) stream: " + e.getMessage());
+                    }
+                     
+                })
+                .join(); // Wait for the async operation to complete
+                return weatherReport;
+    }
+}
+

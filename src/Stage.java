@@ -35,7 +35,7 @@ public class Stage {
     currentState.paint(g, this);
     grid.paint(g, mouseLoc);
     // Blue cell selection overlay with 50% transparency
-    grid.paintOverlay(g, cellOverlay, new Color(0f, 0f, 1f, 0.5f));
+    grid.paintOverlay(g, cellOverlay, new Color(0.9f, .7f, 0.5f, 0.8f));
 
     beat.ticktock();
     for(Actor player: listOfPlayers) {

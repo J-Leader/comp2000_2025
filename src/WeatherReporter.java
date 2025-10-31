@@ -1,4 +1,3 @@
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,13 +6,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 public class WeatherReporter {
 
-public List<String[]> checkWeather(){
+public /*List<String[]>*/ void checkWeather(){
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -24,10 +19,16 @@ public List<String[]> checkWeather(){
                 .thenApply(HttpResponse::body)
                 .thenAccept(inputStream -> {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-                        List<String[]> weatherReport = reader.lines()
+                        /*List<String[]> weatherReport =*/ reader.lines()
                                 .map(line -> line.split(" "))
                                 .limit(1)
-                                .collect(Collectors.toList())
+                                //.collect(Collectors.toList())
+                                .forEach(parts ->{
+                                System.out.println(parts[0]);
+                                
+
+
+                                })
                                 ;
                                
                     } catch (IOException e) {
@@ -36,7 +37,7 @@ public List<String[]> checkWeather(){
                      
                 })
                 .join(); // Wait for the async operation to complete
-                return weatherReport;
+              
     }
 }
 

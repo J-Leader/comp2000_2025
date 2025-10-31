@@ -11,8 +11,11 @@ import java.util.Random;
 public class Grid {
   Cell[][] cells = new Cell[20][20];
   Random rand = new Random();
+  WeatherReporter weatherReporter;
   
+      
   public Grid() {
+    weatherReporter = new WeatherReporter();
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
           int randomSpawnValue = rand.nextInt(15);

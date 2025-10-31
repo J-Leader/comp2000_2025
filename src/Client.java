@@ -7,10 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.Random;
 
 public class Client {
@@ -20,6 +17,10 @@ public class Client {
         Random rand = new Random();
         int randomSpawnValue = rand.nextInt(4);
         long myLong = randomSpawnValue;
+        List<String[]> weatherList;
+
+        weatherList = new ArrayList<>();
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -32,12 +33,12 @@ public class Client {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
                             reader.lines()
                                 .map(line -> line.split(" "))
-                                .skip(myLong)
+                                //.skip(myLong)
                                 //.filter(pieces -> Float.parseFloat(pieces[4]) < 0.4)
-                                .limit(1)   
+                                //.limit(1)   
                                  //.collect(Collectors.toList());
-                                  .forEach(pieces ->{
-                                    //testPrinter(pieces);
+                                   .forEach(pieces ->{
+                                    testLoader(pieces);
                                     System.out.println("Receieved new weather event at x:" + pieces[1]);
                                     System.out.println("Receieved new weather event at x:" + pieces[2]);
                                     System.out.println("Receieved new weather event at y:" + pieces[3]);
@@ -69,8 +70,8 @@ public class Client {
     }
 
 
-    public static void testPrinter(String[] test){
-        System.out.println(test[0]);
+    public static void testLoader(String[] test){
+        weatherList.add(test);
     }
 
 

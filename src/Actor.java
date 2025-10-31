@@ -20,6 +20,7 @@ public abstract class Actor implements Pulse {
     moves = inMoves;
     turns = 1;
     setPoly();
+    
   }
 
   public void paint(Graphics g) {
@@ -54,4 +55,6 @@ public abstract class Actor implements Pulse {
     hsbValues[1] = ((float) percentage) / 100.0f;
     color = Color.getHSBColor(hsbValues[0], hsbValues[1], hsbValues[2]);
   }
+
+
 }

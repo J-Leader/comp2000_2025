@@ -11,11 +11,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.Random;
 
 public class Client {
-    
+     
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        Random rand = new Random();
+        int randomSpawnValue = rand.nextInt(4);
+        long myLong = randomSpawnValue;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -28,11 +32,13 @@ public class Client {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
                             reader.lines()
                                 .map(line -> line.split(" "))
-                                .filter(pieces -> Float.parseFloat(pieces[4]) < 0.4)
-                                .limit(5)
+                                .skip(myLong)
+                                //.filter(pieces -> Float.parseFloat(pieces[4]) < 0.4)
+                                .limit(1)   
                                  //.collect(Collectors.toList());
                                   .forEach(pieces ->{
                                     //testPrinter(pieces);
+                                    System.out.println("Receieved new weather event at x:" + pieces[1]);
                                     System.out.println("Receieved new weather event at x:" + pieces[2]);
                                     System.out.println("Receieved new weather event at y:" + pieces[3]);
                                     

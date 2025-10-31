@@ -25,6 +25,7 @@ public class SelectingNewLocation implements GameState {
         s.currentState = new ChoosingActor();
       } else {
         s.currentState = new BotMoving();
+        System.out.println("KILLL MEEEEEEEEE");
       }
     }
   }

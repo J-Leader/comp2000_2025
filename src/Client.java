@@ -6,10 +6,17 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Client {
+    
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        String temp;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -22,25 +29,29 @@ public class Client {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
                         reader.lines()
                                 .map(line -> line.split(" "))
-                                //.flatMap(line -> line.stream())
-                                
-                                .limit(5)
-                                .forEach(pieces ->{
-                                    //System.out.println("Receieved new weather event at time:" + pieces[2]);
-                                    System.out.println("Receieved new weather event at time:" + pieces[0]);
+                                .limit(1)
+                                 .forEach(pieces ->{
+
+                                    //System.out.println("Receieved new weather event at x:" + pieces[2]);
+                                    //System.out.println("Receieved new weather event at y:" + pieces[3]);
+                                    System.out.println("Receieved new weather event at time:" + pieces[1]);
+
+                                    //run once, collect, take and apply the transformation in a weather tracker class? Loop it there?
+                                    //simplest implementation, have that class lean into design patterns and have lambda's define conditions
                                     //pieces 1 is weather condition
                                     //pieces 2 is x coord
                                     //pieces 3 is y coord
                                     //pieces 4 is float value
                                     
-                                    //maybe forEach and then a lambda for each condition.\
+                                    //maybe forEach and then a lambda for each condition.
                                     //cells need a currentWeatherCondition variable
                                     // Weather class?
                                     // specific weather subclasses?
                                     //Observer pattern that monitors the weather and informs that cells need to change weather.
-
-
                                 })
+
+
+                                
                                 ;
 
                     } catch (IOException e) {

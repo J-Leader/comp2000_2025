@@ -51,5 +51,7 @@ public abstract class Cell extends Rectangle {
   public int aboveComparison(Cell c) {
     return Integer.compare(row, c.row);
   }
+
+  //state machine to be done
 }
   

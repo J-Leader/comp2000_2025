@@ -7,6 +7,9 @@ public class Bird extends Actor {
 
   public Bird(Cell inLoc, boolean isBot) {
     super(inLoc, Color.GREEN, isBot, birbMoves);
+    possibleMovementTemplate.add("Grass");
+    possibleMovementTemplate.add("Lake");
+    possibleMovementTemplate.add("Mountain");
   }
 
   protected void setPoly() {

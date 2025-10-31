@@ -7,6 +7,8 @@ public class Cat extends Actor {
 
   public Cat(Cell inLoc, boolean isBot) {
     super(inLoc, Color.BLUE, isBot, catMoves);
+    possibleMovementTemplate.add("Grass");
+    possibleMovementTemplate.add("Mountain");
   }
 
   protected void setPoly() {

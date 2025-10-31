@@ -7,6 +7,8 @@ public class Dog extends Actor {
 
   public Dog(Cell inLoc, boolean isBot) {
     super(inLoc, Color.YELLOW, isBot, dogMoves);
+    possibleMovementTemplate.add("Grass");
+    possibleMovementTemplate.add("Lake");
   }
 
   protected void setPoly() {

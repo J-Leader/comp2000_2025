@@ -44,7 +44,7 @@ public void /*ArrayList<String[]>*/  checkWeather(){
                 .join(); // Wait for the async operation to complete
             
                 //return weatherReport;
-
+                
     }
 }
 

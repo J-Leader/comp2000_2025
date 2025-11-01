@@ -13,13 +13,19 @@ public abstract class Cell extends Rectangle {
   //List<Items> spawnableItems; //to be a list of items that a cell can spawn. 
   boolean hovered;
 
-  int weatherState; // int tracking weather state
+  WeatherState currentWeatherState;
+
+  static final String rain = "rain";
+  static final String temp = "temp";
+  static final String windx = "windx";
+  static final String windy = "windy";
+
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
     col = inCol;
     row = inRow;
-    weatherState = 0; // sets initial weather state to clear
+    currentWeatherState = new WeatherClear();
   }
 
    public void paint(Graphics g, Point mousePos) {
@@ -35,6 +41,7 @@ public abstract class Cell extends Rectangle {
     g.fillRect(x, y, size, size);
     g.setColor(Color.BLACK);
     g.drawRect(x, y, size, size);
+    currentWeatherState.paint(g, mousePos);
   }
 
 
@@ -55,8 +62,31 @@ public abstract class Cell extends Rectangle {
     return Integer.compare(row, c.row);
   }
 
+  public void weatherUpdate(String weatherType){
+    switch (weatherType) {
+    case rain: 
+        currentWeatherState = new WeatherRain(this);
+      break; // Exits the switch statement
+    case temp:
+        currentWeatherState = new WeatherTemp(this);
+      break;
+    case windx:
+    currentWeatherState = new WeatherWindX(this);
+      break;
+    case windy:
+    currentWeatherState = new WeatherWindY(this);
+      break;
+    default:
+        currentWeatherState = new WeatherClear();
+        break;
+
+
+
+  }
+
   //state machine to be done
 
   
+}
 }
   

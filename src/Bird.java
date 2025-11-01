@@ -6,7 +6,7 @@ public class Bird extends Actor {
   public static final int birbMoves = 3;
 
   public Bird(Cell inLoc, boolean isBot) {
-    super(inLoc, Color.GREEN, isBot, birbMoves);
+    super(inLoc, Color.RED, isBot, birbMoves);
     possibleMovementTemplate.add("Grass");
     possibleMovementTemplate.add("Lake");
     possibleMovementTemplate.add("Mountain");

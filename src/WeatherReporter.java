@@ -8,17 +8,18 @@ public class WeatherReporter {
     String lastX;
     String lastY;
     ArrayList<String[]> weatherUpdate;
+    Grid gridReference;
 
 
 
-public WeatherReporter(Cell[][] cells){
+public WeatherReporter(Cell[][] cells, Grid grid){
        cellsInGrid = Arrays.stream(cells)
                 .map(innerArray -> Arrays.stream(innerArray)
                         .collect(Collectors.toCollection(ArrayList::new))) // Collect inner array to ArrayList<Integer>
                 .collect(Collectors.toCollection(ArrayList::new)); // Collect outer stream to ArrayList<ArrayList<Integer>>
         weatherUpdate = new ArrayList<String[]>();
 
-
+        gridReference = grid;
                 //System.out.println(cellsInGrid.get(0).get(0).col);
 
 }
@@ -44,14 +45,20 @@ public void update(ArrayList<String[]> weatherReport){
             lastY = Pieces[3];
             weatherUpdate.add(Pieces);
         }
-        else
-        {
-            //weatherReport.remove(weatherReport.indexOf(Pieces));
-        }
-    });
-    //System.out.println(weatherUpdate);
 
+    });
+
+    weatherUpdate.forEach(Updates -> {
+        //Updates[3] = Character.toString(gridReference.colToLabel(Integer.parseInt(Updates[3])));  //turn column into letters
+        
+        Cell updatedCell = gridReference.cellAtColRow(Integer.parseInt(Updates[2]), Integer.parseInt(Updates[3])).get();
+        updatedCell.weatherUpdate(Updates[1]);
+        System.out.println(updatedCell);
+
+   });
     
 }
+
+
 
 }

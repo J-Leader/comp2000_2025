@@ -34,10 +34,10 @@ public class Grid {
         }
       }
     }
-    weatherReporter = new WeatherReporter(cells);
+    weatherReporter = new WeatherReporter(cells, this);
   }
 
-  private char colToLabel(int col) {
+  public char colToLabel(int col) {
     return (char) (col + Character.valueOf('A'));
   }
 

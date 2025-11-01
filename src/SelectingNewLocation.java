@@ -27,6 +27,8 @@ public class SelectingNewLocation implements GameState {
         s.currentState = new BotMoving();
         s.grid.weatherStation.checkWeather();
         s.grid.weatherReporter.update(s.grid.weatherStation.weatherReport);
+
+        
         //System.out.println(s.grid.weatherStation.weatherReport);
       }
     }

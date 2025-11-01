@@ -23,9 +23,10 @@ public class SelectingNewLocation implements GameState {
       }
       if(humansWithMovesLeft > 0) {
         s.currentState = new ChoosingActor();
-      } else {
+      } else { //TURN END CODE
         s.currentState = new BotMoving();
-        s.grid.weatherReporter.checkWeather();
+        s.grid.weatherStation.checkWeather();
+        System.out.println(s.grid.weatherStation.weatherReport);
       }
     }
     else// what to do if cliced was not present

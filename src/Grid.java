@@ -11,11 +11,12 @@ import java.util.Random;
 public class Grid {
   Cell[][] cells = new Cell[20][20];
   Random rand = new Random();
+  WeatherStation weatherStation;
   WeatherReporter weatherReporter;
   
       
   public Grid() {
-    weatherReporter = new WeatherReporter();
+    weatherStation = new WeatherStation();
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
           int randomSpawnValue = rand.nextInt(15);
@@ -33,6 +34,7 @@ public class Grid {
         }
       }
     }
+    weatherReporter = new WeatherReporter(cells);
   }
 
   private char colToLabel(int col) {

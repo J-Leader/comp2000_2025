@@ -24,6 +24,7 @@ public void /*ArrayList<String[]>*/  checkWeather(){
                 .thenAccept(inputStream -> {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
                         weatherReport = reader.lines()
+                                .filter(line -> !line.contains("-"))
                                 .map(line -> line.split(" "))
                                 .limit(10)
                                 .collect(Collectors.toCollection(ArrayList::new));

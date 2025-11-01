@@ -12,7 +12,7 @@ public WeatherReporter(Cell[][] cells){
                 .collect(Collectors.toCollection(ArrayList::new)); // Collect outer stream to ArrayList<ArrayList<Integer>>
 
 
-                System.out.println(cellsInGrid.get(0).get(0).col);
+                //System.out.println(cellsInGrid.get(0).get(0).col);
 
 }
 
@@ -26,9 +26,10 @@ public void unsubscribe(Cell newCell){
 }
 
 public void update(ArrayList<String[]> weatherReport){
-
-
-
+    for (String[] Pieces : weatherReport) {
+        System.out.println(Pieces[2]);
+        System.out.println(Pieces[3]);
+    }
 }
 
 }

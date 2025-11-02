@@ -12,6 +12,8 @@ int offset  = 2;
 int ovalWidth;
 int ovalHeight;
 
+
+
  public WeatherTemp(Cell thisCell){
         ovalX = thisCell.x + offset;
         ovalY = thisCell.y +offset;

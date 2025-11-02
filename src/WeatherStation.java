@@ -7,12 +7,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 public class WeatherStation {
 ArrayList<String[]> weatherReport;
 
 public void /*ArrayList<String[]>*/  checkWeather(){
-
+weatherReport = new ArrayList<String[]>();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://13.238.167.130/weather"))
@@ -23,17 +22,25 @@ public void /*ArrayList<String[]>*/  checkWeather(){
                 .thenApply(HttpResponse::body)
                 .thenAccept(inputStream -> {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-                        weatherReport = reader.lines()
-                                .filter(line -> !line.contains("-"))
-                                .map(line -> line.split(" "))
+                        reader.lines()
                                 .limit(10)
-                                .collect(Collectors.toCollection(ArrayList::new));
-                                /* .forEach(parts ->{
-                                System.out.println(parts[0]);
+                                .map(line -> line.split(" "))
+                                .forEach(parts ->{
+
+                                    
+                                    if(parts[2].contains("-"))
+                                    {
+                                        parts[2] = parts[2].replaceAll("-", "");
+                                    }
+                                    
+                                    if(parts[3].contains("-"))
+                                    {
+                                        parts[3] = parts[3].replaceAll("-", "");
+                                    }
                                 
-
-
-                                })*/
+                                    weatherReport.add(parts);
+                                    
+                                })
                                 ;
                                
                     } catch (IOException e) {
@@ -43,7 +50,6 @@ public void /*ArrayList<String[]>*/  checkWeather(){
                 })
                 .join(); // Wait for the async operation to complete
             
-                //return weatherReport;
                 
     }
 }

@@ -13,6 +13,8 @@ public abstract class Actor implements Pulse {
   int turns;
   MoveStrategy mover;
   List<String> possibleMovementTemplate; // used in subclasses to define the names of Cells the Actor can step into
+  String DislikedWeatherName;
+  boolean disabled;
    
 
   protected Actor(Cell inLoc, Color inColor, boolean isBot, int inMoves) {
@@ -24,11 +26,12 @@ public abstract class Actor implements Pulse {
     turns = 1;
     setPoly();
     possibleMovementTemplate = new ArrayList<>();
+    disabled = false;
   }
 
   public void paint(Graphics g) {
     for(Polygon p: display) {
-      g.setColor(color);
+      g.setColor(baseColor);
       g.fillPolygon(p);
       g.setColor(Color.GRAY);
       g.drawPolygon(p);

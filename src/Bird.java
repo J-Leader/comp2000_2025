@@ -10,6 +10,7 @@ public class Bird extends Actor {
     possibleMovementTemplate.add("Grass");
     possibleMovementTemplate.add("Lake");
     possibleMovementTemplate.add("Mountain");
+    DislikedWeatherName = "WeatherWind";
   }
 
   protected void setPoly() {

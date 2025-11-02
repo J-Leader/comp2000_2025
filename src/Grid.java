@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.Random;
+import java.util.Set;
 
 public class Grid {
   Cell[][] cells = new Cell[20][20];
@@ -41,7 +41,7 @@ public class Grid {
     return (char) (col + Character.valueOf('A'));
   }
 
-  private int labelToCol(char col) {
+  public int labelToCol(char col) {
     return (int) (col - Character.valueOf('A'));
   }
 
@@ -99,17 +99,20 @@ public class Grid {
 
       for(int x=0; x<prospectiveMovementList.size(); x++) 
       {
+        //determines what cells the actor can move to based off of what kind of cells and what kind of weather they are able to move into
         Class currentCellType = prospectiveMovementList.get(x).getClass();
         String currentCellTypeName = currentCellType.getName();
         for(int k=0; k<player.possibleMovementTemplate.size();k++)
         {
-          if(currentCellTypeName==player.possibleMovementTemplate.get(k))
+          if(currentCellTypeName.equals(player.possibleMovementTemplate.get(k)) && !prospectiveMovementList.get(x).currentWeatherState.getClass().getName().equals(player.DislikedWeatherName))
           {
             finalMovementList.add(prospectiveMovementList.get(x));
+            
           }
           
         }
       }
+
     return finalMovementList;
     
   }

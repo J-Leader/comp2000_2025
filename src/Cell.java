@@ -71,10 +71,10 @@ public abstract class Cell extends Rectangle {
         currentWeatherState = new WeatherTemp(this);
       break;
     case windx:
-    currentWeatherState = new WeatherWindX(this);
+    currentWeatherState = new WeatherWind(this);
       break;
     case windy:
-    currentWeatherState = new WeatherWindY(this);
+    currentWeatherState = new WeatherWind(this);
       break;
     default:
         currentWeatherState = new WeatherClear();
@@ -83,10 +83,6 @@ public abstract class Cell extends Rectangle {
 
 
   }
-
-  //state machine to be done
-
-  
 }
 }
   

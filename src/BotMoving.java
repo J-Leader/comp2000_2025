@@ -19,7 +19,11 @@ public class BotMoving implements GameState {
     }
     s.currentState = new ChoosingActor();
     for(Actor player: s.listOfPlayers) {
-      player.turns = 1;
+      if(player.disabled == false)
+      {
+        player.turns = 1;
+      }
+
     }
   }  
 

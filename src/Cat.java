@@ -9,6 +9,7 @@ public class Cat extends Actor {
     super(inLoc, Color.BLUE, isBot, catMoves);
     possibleMovementTemplate.add("Grass");
     possibleMovementTemplate.add("Mountain");
+    DislikedWeatherName = "WeatherRain";
   }
 
   protected void setPoly() {

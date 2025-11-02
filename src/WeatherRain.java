@@ -18,6 +18,7 @@ int trianglePointY;
 int[] xPoints = new int[3];
 int[] yPoints = new int[3];
 
+
     public WeatherRain(Cell thisCell){
         ovalX = thisCell.x + offset;
         ovalY = thisCell.y +offset;

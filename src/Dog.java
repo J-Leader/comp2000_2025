@@ -9,6 +9,7 @@ public class Dog extends Actor {
     super(inLoc, Color.YELLOW, isBot, dogMoves);
     possibleMovementTemplate.add("Grass");
     possibleMovementTemplate.add("Lake");
+    DislikedWeatherName = "WeatherTemp";
   }
 
   protected void setPoly() {

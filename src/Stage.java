@@ -77,6 +77,7 @@ public class Stage {
       g.drawString(Character.toString(a.loc.col) + Integer.toString(a.loc.row), valueIndent, yLoc+vTab);
       g.drawString("player type:", labelIndent, yLoc+2*vTab);
       g.drawString(a.isBot() ? "Bot" : "Human", valueIndent, yLoc+2*vTab);
+      g.drawString("Moves remaining this turn: " + String.valueOf(a.turns), labelIndent, yLoc+3*vTab);
       if(a.isBot() && a.mover != null) {
         g.drawString("mover:", labelIndent, yLoc+3*vTab);
         g.drawString(a.mover.getClass().getName(), valueIndent, yLoc+3*vTab);
